@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff6600">
+
+<!-- SEO Meta Tags -->
+<title>KingBoss FreeFire Player</title>
+<meta name="description" content="Join KingBoss FreeFire Player Mega Tournament! Solo BR matches, daily prizes, and instant rewards. Register now and become a winner!">
+<meta name="keywords" content="KingBoss, FreeFire, Free Fire, FreeFire Tournament, BR, Battle Royale, Gaming, 2026, Player">
+<meta name="author" content="KingBoss">
+
+<link rel="icon" href="icon-192.png" sizes="192x192">
+
+<style>
+/* BODY */
+body{
+  margin:0;
+  font-family: 'Arial', sans-serif;
+  background:#0b0b0b;
+  color:#fff;
+}
+
+/* HERO SECTION */
+.hero{
+  height:90vh;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("banner.jpg");
+  background-size: cover;
+  background-position: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  flex-direction: column;
+}
+.hero h1{
+  font-size:3rem;
+  color:#ffcc00;
+  text-shadow:0 0 25px orange;
+  animation: glow 1.5s infinite alternate;
+}
+.hero p{
+  font-size:1.2rem;
+  margin:15px 0;
+}
+.glow-btn{
+  padding:15px 35px;
+  margin-top:15px;
+  border:none;
+  border-radius:30px;
+  font-size:1.2rem;
+  background:#ff6600;
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 0 25px #ff6600;
+  transition:0.3s;
+}
+.glow-btn:hover{
+  box-shadow:0 0 50px #ffcc00, 0 0 80px #ff6600;
+  transform: scale(1.05);
+}
+@keyframes glow{
+  0% {text-shadow: 0 0 10px #ff6600, 0 0 20px #ffcc00;}
+  100% {text-shadow: 0 0 25px #ffcc00, 0 0 50px #ff6600;}
+}
+
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  padding:40px;
+}
+.card{
+  background:#111;
+  padding:25px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 0 20px rgba(255,165,0,0.3);
+  transition:0.3s;
+}
+.card:hover{
+  transform: translateY(-10px);
+  box-shadow:0 0 30px #ffcc00;
+}
+.card h3{
+  color:#ffcc00;
+  margin:10px 0;
+}
+.card img{
+  width:50px;
+}
+
+/* MAP SECTION */
+.map-banner{
+  margin:20px;
+  padding:30px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#1a1a1a,#000);
+  text-align:center;
+  border:2px solid #ff6600;
+}
+.map-banner h2{
+  color:#ffcc00;
+  text-shadow:0 0 10px orange;
+}
+.map-banner img{
+  width:100%;
+  max-width:500px;
+  margin:15px 0;
+  border-radius:15px;
+  box-shadow:0 0 20px orange;
+}
+
+/* PRIZE */
+.prize-banner{
+  margin:40px 20px;
+  padding:40px 20px;
+  text-align:center;
+  border-radius:20px;
+  background:linear-gradient(135deg,#ff6600,#ffcc00);
+  color:#000;
+  box-shadow:0 0 30px rgba(255,165,0,0.8);
+}
+.prize-banner img{
+  max-width:180px;
+  margin-bottom:15px;
+}
+.prize-banner h2{
+  font-size:2rem;
+}
+
+/* FEATURE IMAGE */
+.feature-image{
+  text-align:center;
+  margin:40px 20px;
+}
+.feature-image img{
+  width:100%;
+  max-width:700px;
+  border-radius:20px;
+  box-shadow:0 0 25px orange;
+}
+
+/* WINNER IMAGE */
+.winner-image{
+  text-align:center;
+  margin:40px 20px;
+}
+.winner-image img{
+  max-width:300px;
+  border-radius:15px;
+  box-shadow:0 0 20px #ffcc00;
+}
+
+/* POPUP REGISTER FORM */
+#registerPopup{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  z-index:999;
+}
+.register-box{
+  background:#111;
+  width:350px;
+  margin:100px auto;
+  padding:25px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 0 25px orange;
+}
+.register-box h2{
+  color:#ffcc00;
+  margin-bottom:15px;
+}
+.register-box input{
+  width:90%;
+  padding:10px;
+  margin:10px 0;
+  border:none;
+  border-radius:8px;
+  font-size:1rem;
+}
+.register-box button{
+  width:95%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:8px;
+  background:#ff6600;
+  color:#fff;
+  font-size:1.1rem;
+  cursor:pointer;
+  transition:0.3s;
+}
+.register-box button:hover{
+  background:#ffcc00;
+  color:#000;
+}
+.close{
+  margin-top:15px;
+  color:#ff6600;
+  cursor:pointer;
+}
+
+/* SEARCH PLAYER SECTION */
+#playerSearch{
+  margin:40px 20px;
+  padding:30px;
+  background:#111;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 0 25px orange;
+}
+#playerSearch input{
+  padding:10px;
+  width:250px;
+  border-radius:8px;
+  border:none;
+  margin-right:10px;
+}
+#playerSearch button{
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  background:#ff6600;
+  color:#fff;
+  cursor:pointer;
+  transition:0.3s;
+}
+#playerSearch button:hover{
+  background:#ffcc00;
+  color:#000;
+}
+.player-card{
+  margin-top:20px;
+  padding:15px;
+  background:#222;
+  border-radius:10px;
+  box-shadow:0 0 15px orange;
+}
+
+/* FOOTER */
+footer{
+  background:#000;
+  padding:20px;
+  text-align:center;
+  font-size:0.9rem;
+}
+
+/* INSTAGRAM FLOATING ICON */
+.insta-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  z-index: 1000;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.insta-icon img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.insta-icon:hover {
+  transform: scale(1.2);
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>🔥 FREE FIRE MEGA TOURNAMENT 🔥</h1>
+    <p>Solo • BR • Full Map</p>
+    <button class="glow-btn" onclick="openRegister()">Register Now</button>
+  </div>
+</section>
+
+<!-- INFO CARDS -->
+<section class="cards">
+  <div class="card">
+    <img src="date.png" alt="Date Icon">
+    <h3>📅 Date</h3>
+    <p>30th Friday Evening</p>
+  </div>
+  <div class="card">
+    <img src="game.png" alt="Mode Icon">
+    <h3>🎮 Mode</h3>
+    <p>Solo BR</p>
+  </div>
+  <div class="card">
+    <img src="entry.png" alt="Entry Icon">
+    <h3>🎟️ Entry</h3>
+    <p>FREE</p>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-banner">
+  <h2>🗺️ MAP: FULL MAP</h2>
+  <img src="map.jpg" alt="Map">
+  <p>Character Skills ON • Gun Skins ON • Gloo Wall Limited</p>
+</section>
+
+<!-- PRIZE -->
+<section class="prize-banner">
+  <img src="prize.jpg" alt="Prize">
+  <h2>💰 WIN ₹10 PER MATCH 💰</h2>
+  <p>Daily Matches • Instant Rewards</p>
+</section>
+
+<!-- FEATURE -->
+<section class="feature-image">
+  <img src="feature.jpg" alt="Gameplay">
+</section>
+
+<!-- WINNER -->
+<section class="winner-image">
+  <h2 style="color:#ffcc00;">🏆 Winners Get Instant Rewards</h2>
+  <img src="winner.jpg" alt="Winner">
+</section>
+
+<!-- SEARCH PLAYER -->
+<section id="playerSearch">
+  <h2>🔎 Search Player</h2>
+  <input type="text" id="searchInput" placeholder="Enter FF ID or Name">
+  <button onclick="searchPlayer()">Search</button>
+  <div id="result"></div>
+</section>
+
+<!-- REGISTER POPUP -->
+<div id="registerPopup">
+  <div class="register-box">
+    <h2>Register Now</h2>
+    <a href="YOUR_REGISTRATION_LINK_HERE" target="_blank">
+      <button>Go to Registration Form</button>
+    </a>
+    <div class="close" onclick="closeRegister()">Cancel</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Free Fire Tournament</p>
+  <p>Not affiliated with Garena</p>
+</footer>
+
+<!-- Instagram Floating Icon -->
+<a href="https://www.instagram.com/freefirexipl.2k26" target="_blank" class="insta-icon">
+  <img src="insta-icon.png" alt="Instagram">
+</a>
+
+<script>
+// POPUP FUNCTIONS
+function openRegister(){ document.getElementById("registerPopup").style.display="block"; }
+function closeRegister(){ document.getElementById("registerPopup").style.display="none"; }
+
+// SAMPLE PLAYER DATABASE
+const players=[
+  {id:"KINGBOSS123", name:"King Boss", prize:"₹10/day"},
+  {id:"SHADOW99", name:"Shadow Ninja", prize:"₹10/day"},
+  {id:"BLAZE01", name:"Blaze Fire", prize:"₹10/day"}
+];
+
+// SEARCH PLAYER FUNCTION
+function searchPlayer(){
+  const input=document.getElementById("searchInput").value.toUpperCase();
+  const resultDiv=document.getElementById("result");
+  resultDiv.innerHTML="";
+  const found=players.filter(player=>player.id.toUpperCase()===input||player.name.toUpperCase()===input);
+  if(found.length>0){
+    found.forEach(player=>{
+      resultDiv.innerHTML+=`<div class="player-card">
+        <h3>${player.name}</h3>
+        <p>FF ID: ${player.id}</p>
+        <p>Prize: ${player.prize}</p>
+      </div>`;
+    });
+  }else{resultDiv.innerHTML="<p>No player found!</p>";}
+}
+
+// SERVICE WORKER
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+
+</body>
+</html>
