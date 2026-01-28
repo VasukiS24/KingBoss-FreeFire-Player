@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FF Updates | KingBoss</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Montserrat', sans-serif;
+  background:#0b0b0b;
+  color:#fff;
+}
+
+/* TOP BAR */
+.top-bar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:60px;
+  background:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 2px 12px rgba(0,0,0,0.6);
+  z-index:100;
+}
+.top-bar h1{
+  font-family:'Bebas Neue', cursive;
+  letter-spacing:2px;
+  color:#ffcc00;
+  font-size:1.6rem;
+}
+
+/* HERO */
+.hero{
+  margin-top:60px;
+  height:220px;
+  background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url("banner.jpg") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.hero h2{
+  font-family:'Bebas Neue', cursive;
+  font-size:2rem;
+  color:#ffcc00;
+  text-shadow:0 0 20px orange;
+}
+
+/* CONTENT */
+.container{
+  padding:20px;
+  max-width:900px;
+  margin:auto;
+}
+
+/* UPDATE CARD */
+.update-card{
+  background:#111;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:25px;
+  box-shadow:0 0 20px rgba(255,165,0,0.35);
+  transition:0.3s;
+}
+.update-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 30px #ffcc00;
+}
+.update-card h3{
+  font-family:'Bebas Neue', cursive;
+  letter-spacing:2px;
+  color:#ffcc00;
+  margin-bottom:10px;
+}
+.update-card p{
+  font-size:0.95rem;
+  opacity:0.9;
+}
+
+/* MEDIA */
+.update-card img,
+.update-card video{
+  width:100%;
+  border-radius:14px;
+  margin-top:12px;
+  box-shadow:0 0 15px rgba(255,165,0,0.4);
+}
+
+/* TAG */
+.tag{
+  display:inline-block;
+  margin-bottom:8px;
+  padding:4px 12px;
+  border-radius:20px;
+  font-size:0.75rem;
+  background:#ff6600;
+  color:#000;
+  font-weight:bold;
+}
+
+/* BACK BUTTON */
+.back-btn{
+  display:block;
+  text-align:center;
+  margin:30px auto 10px;
+  width:200px;
+  padding:12px;
+  border-radius:30px;
+  background:#ff6600;
+  color:#fff;
+  font-family:'Bebas Neue', cursive;
+  letter-spacing:2px;
+  text-decoration:none;
+  box-shadow:0 0 20px orange;
+}
+.back-btn:hover{
+  background:#ffcc00;
+  color:#000;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero{ height:180px; }
+  .hero h2{ font-size:1.7rem; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <h1>🔥 FF UPDATES 🔥</h1>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h2>Latest Tournament News</h2>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+  <!-- UPDATE 1 -->
+  <div class="update-card">
+    <span class="tag">RESULT</span>
+    <h3>🏆 Match Winners Announced</h3>
+    <p>Yesterday’s Solo BR match winners have received instant rewards.</p>
+    <img src="result.png" alt="Winner">
+  </div>
+
+  <!-- UPDATE 2 -->
+  <div class="update-card">
+    <span class="tag">HIGHLIGHT</span>
+    <h3>🎥 Best Gameplay Moment</h3>
+    <p>Watch the best clutch moment from last night.</p>
+    <video controls>
+      <source src="highlight.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- UPDATE 4 -->
+<div class="update-card">
+  <span class="tag">POSTER</span>
+  <h3>🔥 Tonight’s Tournament Poster</h3>
+  <p>Free Entry Solo BR • Full Map • Instant ₹10 Rewards</p>
+  <img src="prize.jpg" alt="Tournament Poster">
+  <img src="ff30.jpeg" alt="Tournament Poster">
+  <img src="ffpoint.jpeg" alt="Tournament Poster">
+  <img src="ffattent.jpeg" alt="Tournament Poster">
+</div>
+
+<!-- UPDATE 5 -->
+<div class="update-card">
+  <span class="tag">YOUTUBE</span>
+  <h3>🎮 Full Match Highlights</h3>
+  <p>Watch full highlights from yesterday’s Free Fire tournament.</p>
+
+  <div class="video-wrap">
+    <iframe 
+      src="https://www.youtube.com/embed/@SCRSgamers-y7u"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+
+  <!-- UPDATE 3 -->
+  <div class="update-card">
+    <span class="tag">ANNOUNCEMENT</span>
+    <h3>📢 Today’s Match Time</h3>
+    <p>Next Solo BR match starts at <b>7:00 PM IST</b>. Join early!</p>
+  </div>
+
+  <a href="index.html" class="back-btn">← Back to Home</a>
+
+</div>
+
+</body>
+</html>
