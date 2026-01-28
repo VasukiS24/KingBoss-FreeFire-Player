@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#ff6600">
 
@@ -11,6 +12,7 @@
 <meta name="description" content="Join KingBoss FreeFire Player Mega Tournament! Solo BR matches, daily prizes, and instant rewards. Register now and become a winner!">
 <meta name="keywords" content="KingBoss, FreeFire, Free Fire, FreeFire Tournament, BR, Battle Royale, Gaming, 2026, Player">
 <meta name="author" content="KingBoss">
+<meta name="robots" content="index, follow">
 
 <link rel="icon" href="icon-192.png" sizes="192x192">
 
@@ -26,21 +28,26 @@ body {
   font-family: 'Montserrat', sans-serif;
   background:#0b0b0b;
   color:#fff;
+  padding-top:60px; /* space for fixed top menu */
 }
 
 /* HERO SECTION */
 .hero {
-  height:100vh; /* full screen */
+  min-height:100dvh;
+  min-height:100svh;
   min-height:400px;
   position:relative;
   background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("banner.jpg") no-repeat center center;
-  background-size: cover; /* cover entire hero */
+  background-size: cover;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
   flex-direction: column;
   padding:0 10px;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index:1;
 }
 .hero h1 {
   font-family: 'Bebas Neue', cursive;
@@ -50,10 +57,7 @@ body {
   animation: glow 1.5s infinite alternate;
   letter-spacing:3px;
 }
-.hero p {
-  font-size:1.2rem;
-  margin:15px 0;
-}
+.hero p { font-size:1.2rem; margin:15px 0; }
 .glow-btn {
   font-family: 'Bebas Neue', cursive;
   letter-spacing:2px;
@@ -76,8 +80,6 @@ body {
   0% {text-shadow: 0 0 10px #ff6600, 0 0 20px #ffcc00;}
   100% {text-shadow: 0 0 25px #ffcc00, 0 0 50px #ff6600;}
 }
-
-/* OVERLAY FOR HERO TEXT */
 .hero::before {
   content:"";
   position:absolute;
@@ -86,250 +88,101 @@ body {
   background: rgba(0,0,0,0.4);
   z-index:1;
 }
-.hero > div {
-  position:relative;
-  z-index:2;
-}
+.hero > div { position:relative; z-index:2; }
 
 /* CARDS */
-.cards {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-  padding:40px 20px;
-}
-.card {
-  background:#111;
-  padding:25px;
-  border-radius:15px;
-  text-align:center;
-  box-shadow:0 0 20px rgba(255,165,0,0.3);
-  transition:0.3s;
-}
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow:0 0 30px #ffcc00;
-}
-.card h3 {
-  font-family: 'Bebas Neue', cursive;
-  letter-spacing:2px;
-  color:#ffcc00;
-  margin:10px 0;
-}
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; padding:40px 20px; }
+.card { background:#111; padding:25px; border-radius:15px; text-align:center; box-shadow:0 0 20px rgba(255,165,0,0.3); transition:0.3s; }
+.card:hover { transform: translateY(-10px); box-shadow:0 0 30px #ffcc00; }
+.card h3 { font-family: 'Bebas Neue', cursive; letter-spacing:2px; color:#ffcc00; margin:10px 0; }
 .card img { width:50px; }
 
 /* MAP SECTION */
-.map-banner {
-  margin:20px;
-  padding:30px;
-  border-radius:20px;
-  background:linear-gradient(135deg,#1a1a1a,#000);
-  text-align:center;
-  border:2px solid #ff6600;
-}
-.map-banner h2 {
-  font-family: 'Bebas Neue', cursive;
-  letter-spacing:2px;
-  color:#ffcc00;
-  text-shadow:0 0 10px orange;
-}
-.map-banner img {
-  width:100%;
-  max-width:500px;
-  margin:15px 0;
-  border-radius:15px;
-  box-shadow:0 0 20px orange;
-  object-fit:cover;
-}
+.map-banner { margin:20px; padding:30px; border-radius:20px; background:linear-gradient(135deg,#1a1a1a,#000); text-align:center; border:2px solid #ff6600; }
+.map-banner h2 { font-family: 'Bebas Neue', cursive; letter-spacing:2px; color:#ffcc00; text-shadow:0 0 10px orange; }
+.map-banner img { width:100%; max-width:500px; margin:15px 0; border-radius:15px; box-shadow:0 0 20px orange; object-fit:cover; }
 
 /* PRIZE */
-.prize-banner {
-  margin:40px 20px;
-  padding:40px 20px;
-  text-align:center;
-  border-radius:20px;
-  background:linear-gradient(135deg,#ff6600,#ffcc00);
-  color:#000;
-  box-shadow:0 0 30px rgba(255,165,0,0.8);
-}
-.prize-banner img {
-  max-width:180px;
-  margin-bottom:15px;
-}
-.prize-banner h2 {
-  font-family: 'Bebas Neue', cursive;
-  letter-spacing:2px;
-  font-size:2rem;
-}
+.prize-banner { margin:40px 20px; padding:40px 20px; text-align:center; border-radius:20px; background:linear-gradient(135deg,#ff6600,#ffcc00); color:#000; box-shadow:0 0 30px rgba(255,165,0,0.8); }
+.prize-banner img { max-width:180px; margin-bottom:15px; }
+.prize-banner h2 { font-family: 'Bebas Neue', cursive; letter-spacing:2px; font-size:2rem; }
 
 /* FEATURE IMAGE */
-.feature-image {
-  text-align:center;
-  margin:40px 20px;
-}
-.feature-image img {
-  width:100%;
-  max-width:700px;
-  border-radius:20px;
-  box-shadow:0 0 25px orange;
-  object-fit:cover;
-}
+.feature-image { text-align:center; margin:40px 20px; }
+.feature-image img { width:100%; max-width:700px; border-radius:20px; box-shadow:0 0 25px orange; object-fit:cover; }
 
 /* WINNER IMAGE */
-.winner-image {
-  text-align:center;
-  margin:40px 20px;
-}
-.winner-image img {
-  width:100%;
-  max-width:300px;
-  border-radius:15px;
-  box-shadow:0 0 20px #ffcc00;
-  object-fit:cover;
-}
+.winner-image { text-align:center; margin:40px 20px; }
+.winner-image img { width:100%; max-width:300px; border-radius:15px; box-shadow:0 0 20px #ffcc00; object-fit:cover; }
 
 /* POPUP REGISTER FORM */
-#registerPopup {
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.85);
-  z-index:999;
-}
-.register-box {
-  background:#111;
-  width:350px;
-  max-width:90%;
-  margin:100px auto;
-  padding:25px;
-  border-radius:15px;
-  text-align:center;
-  box-shadow:0 0 25px orange;
-}
-.register-box h2 {
-  font-family: 'Bebas Neue', cursive;
-  letter-spacing:2px;
-  color:#ffcc00;
-  margin-bottom:15px;
-}
-.register-box input {
-  font-family: 'Montserrat', sans-serif;
-  width:90%;
-  padding:10px;
-  margin:10px 0;
-  border:none;
-  border-radius:8px;
-  font-size:1rem;
-}
-.register-box button {
-  font-family: 'Bebas Neue', cursive;
-  letter-spacing:2px;
-  width:95%;
-  padding:12px;
-  margin-top:10px;
-  border:none;
-  border-radius:8px;
-  background:#ff6600;
-  color:#fff;
-  font-size:1.1rem;
-  cursor:pointer;
-  transition:0.3s;
-}
-.register-box button:hover {
-  background:#ffcc00;
-  color:#000;
-}
-.close {
-  margin-top:15px;
-  color:#ff6600;
-  cursor:pointer;
-}
+#registerPopup { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:1004; }
+.register-box { background:#111; width:350px; max-width:90%; margin:100px auto; padding:25px; border-radius:15px; text-align:center; box-shadow:0 0 25px orange; }
+.register-box h2 { font-family: 'Bebas Neue', cursive; letter-spacing:2px; color:#ffcc00; margin-bottom:15px; }
+.register-box input { font-family: 'Montserrat', sans-serif; width:90%; padding:10px; margin:10px 0; border:none; border-radius:8px; font-size:1rem; }
+.register-box button { font-family: 'Bebas Neue', cursive; letter-spacing:2px; width:95%; padding:12px; margin-top:10px; border:none; border-radius:8px; background:#ff6600; color:#fff; font-size:1.1rem; cursor:pointer; transition:0.3s; }
+.register-box button:hover { background:#ffcc00; color:#000; }
+.close { margin-top:15px; color:#ff6600; cursor:pointer; }
 
 /* SEARCH PLAYER SECTION */
-#playerSearch {
-  margin:40px 20px;
-  padding:30px;
-  background:#111;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 0 25px orange;
-}
-#playerSearch h2 {
-  font-family: 'Bebas Neue', cursive;
-  letter-spacing:2px;
-}
-#playerSearch input {
-  font-family: 'Montserrat', sans-serif;
-  padding:10px;
-  width:70%;
-  max-width:200px;
-  border-radius:8px;
-  border:none;
-  margin-bottom:10px;
-}
-#playerSearch button {
-  font-family: 'Bebas Neue', cursive;
-  letter-spacing:2px;
-  padding:10px 20px;
-  border:none;
-  border-radius:8px;
-  background:#ff6600;
-  color:#fff;
-  cursor:pointer;
-  transition:0.3s;
-}
-#playerSearch button:hover {
-  background:#ffcc00;
-  color:#000;
-}
-.player-card {
-  margin-top:20px;
-  padding:15px;
-  background:#222;
-  border-radius:10px;
-  box-shadow:0 0 15px orange;
-}
+#playerSearch { margin:40px 20px; padding:30px; background:#111; border-radius:20px; text-align:center; box-shadow:0 0 25px orange; }
+#playerSearch h2 { font-family: 'Bebas Neue', cursive; letter-spacing:2px; }
+#playerSearch input { font-family: 'Montserrat', sans-serif; padding:10px; width:70%; max-width:200px; border-radius:8px; border:none; margin-bottom:10px; }
+#playerSearch button { font-family: 'Bebas Neue', cursive; letter-spacing:2px; padding:10px 20px; border:none; border-radius:8px; background:#ff6600; color:#fff; cursor:pointer; transition:0.3s; }
+#playerSearch button:hover { background:#ffcc00; color:#000; }
+.player-card { margin-top:20px; padding:15px; background:#222; border-radius:10px; box-shadow:0 0 15px orange; }
 
 /* FOOTER */
-footer {
-  background:#000;
-  padding:20px;
-  text-align:center;
-  font-size:0.9rem;
-}
+footer { background:#000; padding:20px; text-align:center; font-size:0.9rem; }
 
 /* INSTAGRAM FLOATING ICON */
-.insta-icon {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  z-index: 1000;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-.insta-icon img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-.insta-icon:hover {
-  transform: scale(1.2);
-}
+.insta-icon { position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; z-index:1001; cursor: pointer; transition: transform 0.3s; }
+.insta-icon img { width: 100%; height: 100%; border-radius: 50%; }
+.insta-icon:hover { transform: scale(1.2); }
+
+/* TOP MENU BAR */
+.top-menu { display:flex; justify-content:space-between; align-items:center; background:#111; padding:10px 20px; position:fixed; width:100%; top:0; left:0; z-index:1005; box-shadow:0 2px 10px rgba(0,0,0,0.5); }
+.menu-left, .menu-center, .menu-right { display:flex; align-items:center; }
+.menu-logo { width:40px; height:40px; margin:0 10px; }
+.hamburger { font-size:1.5rem; cursor:pointer; color:#ffcc00; z-index:1006; }
+.menu-right a { color:#ffcc00; text-decoration:none; font-weight:bold; }
+
+/* SIDE MENU */
+.side-menu { position:fixed; top:0; left:-250px; width:250px; height:100%; background:#222; padding:60px 20px; display:flex; flex-direction:column; gap:15px; transition:0.3s; z-index:1004; }
+.side-menu a { color:#ffcc00; text-decoration:none; font-size:1.2rem; }
+.side-menu.show { left:0; }
 
 /* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
+  .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("banner-mobile.jpg") no-repeat center top; background-size: contain; }
   .hero h1 { font-size:2rem; }
   .hero p { font-size:1rem; }
   .glow-btn { padding:10px 25px; font-size:1rem; }
-  .cards { grid-template-columns:1fr; padding:20px; gap:15px; }
-  .map-banner img, .feature-image img, .winner-image img { width:100%; max-width:100%; object-fit:cover; }
 }
+
 </style>
 </head>
 
 <body>
+<!-- TOP MENU BAR -->
+<header class="top-menu">
+  <div class="menu-left">
+    <span class="hamburger" onclick="toggleMenu()">☰</span>
+  </div>
+  <div class="menu-center">
+    <img src="icon-192.png" alt="Logo" class="menu-logo">
+  </div>
+  <div class="menu-right">
+    <a href="https://www.instagram.com/freefirexipl.2k26" target="_blank">Login with Instagram</a>
+  </div>
+</header>
+
+<!-- HIDDEN SIDE MENU -->
+<nav id="sideMenu" class="side-menu">
+  <a href="#">Home</a>
+  <a href="#" onclick="openRegister()">Register</a>
+  <a href="https://www.instagram.com/freefirexipl.2k26" target="_blank">Instagram Login</a>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
@@ -343,17 +196,17 @@ footer {
 <!-- INFO CARDS -->
 <section class="cards">
   <div class="card">
-    <img src="date.png" alt="Date Icon">
+    <img src="date.png" alt="Date Icon" loading="lazy">
     <h3>📅 Date</h3>
     <p>30th Friday Evening</p>
   </div>
   <div class="card">
-    <img src="game.png" alt="Mode Icon">
+    <img src="game.png" alt="Mode Icon" loading="lazy">
     <h3>🎮 Mode</h3>
     <p>Solo BR</p>
   </div>
   <div class="card">
-    <img src="entry.png" alt="Entry Icon">
+    <img src="entry.png" alt="Entry Icon" loading="lazy">
     <h3>🎟️ Entry</h3>
     <p>FREE</p>
   </div>
@@ -362,26 +215,26 @@ footer {
 <!-- MAP -->
 <section class="map-banner">
   <h2>🗺️ MAP: FULL MAP</h2>
-  <img src="map.jpg" alt="Map">
+  <img src="map.jpg" alt="Map" loading="lazy">
   <p>Character Skills ON • Gun Skins ON • Gloo Wall Limited</p>
 </section>
 
 <!-- PRIZE -->
 <section class="prize-banner">
-  <img src="prize.jpg" alt="Prize">
+  <img src="prize.jpg" alt="Prize" loading="lazy">
   <h2>💰 WIN ₹10 PER MATCH 💰</h2>
   <p>Daily Matches • Instant Rewards</p>
 </section>
 
 <!-- FEATURE -->
 <section class="feature-image">
-  <img src="feature.jpg" alt="Gameplay">
+  <img src="feature.jpg" alt="Gameplay" loading="lazy">
 </section>
 
 <!-- WINNER -->
 <section class="winner-image">
   <h2 style="color:#ffcc00;">🏆 Winners Get Instant Rewards</h2>
-  <img src="winner.jpg" alt="Winner">
+  <img src="winner.jpg" alt="Winner" loading="lazy">
 </section>
 
 <!-- SEARCH PLAYER -->
@@ -411,7 +264,7 @@ footer {
 
 <!-- Instagram Floating Icon -->
 <a href="https://www.instagram.com/freefirexipl.2k26" target="_blank" class="insta-icon">
-  <img src="insta-icon.png" alt="Instagram">
+  <img src="insta-icon.png" alt="Instagram" loading="lazy">
 </a>
 
 <script>
@@ -419,14 +272,14 @@ footer {
 function openRegister(){ document.getElementById("registerPopup").style.display="block"; }
 function closeRegister(){ document.getElementById("registerPopup").style.display="none"; }
 
-// SAMPLE PLAYER DATABASE
+// SEARCH PLAYER DATABASE
 const players=[
   {id:"KINGBOSS123", name:"King Boss", prize:"₹10/day"},
   {id:"SHADOW99", name:"Shadow Ninja", prize:"₹10/day"},
   {id:"BLAZE01", name:"Blaze Fire", prize:"₹10/day"}
 ];
 
-// SEARCH PLAYER FUNCTION
+// SEARCH FUNCTION
 function searchPlayer(){
   const input=document.getElementById("searchInput").value.toUpperCase();
   const resultDiv=document.getElementById("result");
@@ -444,16 +297,13 @@ function searchPlayer(){
 }
 
 // SERVICE WORKER
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
-}
-</script>
-<link rel="manifest" href="manifest.json">
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js');
-}
-</script>
+if ("serviceWorker" in navigator) { navigator.serviceWorker.register("service-worker.js"); }
 
+// TOGGLE SIDE MENU
+function toggleMenu(){
+  const menu = document.getElementById("sideMenu");
+  menu.classList.toggle("show");
+}
+</script>
 </body>
 </html>
